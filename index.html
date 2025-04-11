@@ -48,6 +48,18 @@
       text-align: center;
     }
 
+    .reserve input, .reserve button {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin: 0.5rem;
+    }
+
+    reserve-total {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+/*
     .reserve a {
       background-color: #4caf50;
       color: white;
@@ -61,8 +73,25 @@
     .reserve a:hover {
       background-color: #45a049;
     }
+    */
 
-     .planning {
+    .reserve a.button {
+      display: inline-block;
+      background-color: #4caf50;
+      color: white;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1.2rem;
+      transition: background-color 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .reserve a.button:hover {
+      background-color: #45a049;
+    }
+
+    .planning {
       margin-top: 4rem;
       text-align: center;
     }
@@ -107,26 +136,64 @@
       </ul>
     </section>
 
-    <section class="planning">
-      <h2>Planning des disponibilités</h2>
-      <p>Consultez les dates déjà réservées dans le calendrier ci-dessous :</p>
-      <!-- <iframe src="https://calendar.google.com/calendar/ical/68eebdbc38074da50041d1547419e7e2a45f9360e1d0fc0589ea7facfca65557%40group.calendar.google.com/public/basic.ics" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe> -->
-      <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FMartinique&showPrint=0&src=NjhlZWJkYmMzODA3NGRhNTAwNDFkMTU0NzQxOWU3ZTJhNDVmOTM2MGUxZDBmYzA1ODllYTdmYWNmY2E2NTU1N0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23E4C441" style="border:solid 1px #777" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
-    </section>
-  </div>
+    
+<section class="reserve">
+      <h2>Réserver maintenant</h2>
 
-    <section class="reserve">
+      <label>Date d'arrivée : <input type="date" id="start"></label><br>
+      <label>Date de départ : <input type="date" id="end"></label>
+
+      <div class="reserve-total" id="total">Total : 0 €</div>
+
+      <!-- Remplace ce lien Stripe par le tien -->
+      <a href="#" id="payLink" class="button" style="pointer-events: none; opacity: 0.5;">Payer avec Stripe</a>
+    </section>
+    
+   <!-- <section class="reserve">
       <h2>Réserver maintenant</h2>
       <!--
       <a href="mailto:tonadresse@email.com?subject=Réservation%20Studio%20Marseille">Réserver par email</a>
       -->
-      <!-- ou avec WhatsApp : -->
-      <a href="https://buy.stripe.com/dR6g1a8un9C1e1W8ww" target="_blank">Réserver</a>
+      <!-- ou avec WhatsApp : -
+      <a href="https://buy.stripe.com/dR6g1a8un9C1e1W8ww" target="_blank">Réserver</a> 
       
-    </section>
+    </section>-->
 
   <footer>
     &copy; 2025 TISSOT Volny Lamentin. Tous droits réservés.
   </footer>
+     <script>
+    const startInput = document.getElementById('start');
+    const endInput = document.getElementById('end');
+    const totalDiv = document.getElementById('total');
+    const payLink = document.getElementById('payLink');
+
+    const pricePerNight = 50; // en €
+    const stripeBaseLink = 'https://buy.stripe.com/test_xxxxxxxxxxxxx'; // à remplacer
+
+    function updateTotal() {
+      const startDate = new Date(startInput.value);
+      const endDate = new Date(endInput.value);
+      const timeDiff = endDate - startDate;
+      const nights = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+      if (nights > 0) {
+        const total = nights * pricePerNight;
+        totalDiv.textContent = `Total : ${total} € pour ${nights} nuit(s)`;
+        payLink.style.pointerEvents = 'auto';
+        payLink.style.opacity = 1;
+
+        // Option : rediriger vers un lien Stripe avec montant personnalisé si dynamique
+        // Ici, le lien Stripe est fixe. Tu peux créer plusieurs liens prédéfinis pour 1, 2, 3 nuits...
+      } else {
+        totalDiv.textContent = 'Total : 0 €';
+        payLink.style.pointerEvents = 'none';
+        payLink.style.opacity = 0.5;
+      }
+    }
+
+    startInput.addEventListener('change', updateTotal);
+    endInput.addEventListener('change', updateTotal);
+  </script>
 </body>
 </html>
