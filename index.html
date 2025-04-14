@@ -150,16 +150,6 @@
       <a href="https://buy.stripe.com/dR6g1a8un9C1e1W8ww" id="payLink" class="button" style="pointer-events: none; opacity: 0.5;">Payer avec Stripe</a>
     </section>
     
-   <!-- <section class="reserve">
-      <h2>Réserver maintenant</h2>
-      <!--
-      <a href="mailto:tonadresse@email.com?subject=Réservation%20Studio%20Marseille">Réserver par email</a>
-      -->
-      <!-- ou avec WhatsApp : -
-      <a href="https://buy.stripe.com/dR6g1a8un9C1e1W8ww" target="_blank">Réserver</a> 
-      
-    </section>-->
-
   <footer>
     &copy; 2025 TISSOT Volny Lamentin. Tous droits réservés.
   </footer>
@@ -170,13 +160,16 @@
     const payLink = document.getElementById('payLink');
 
     const pricePerNight = 70; // en €
+
+    // Liens Stripe prédéfinis pour différentes durées
     const stripeLinks = {
-  1: 'https://buy.stripe.com/dR6g1a8un9C1e1W8ww',
-  2: 'https://buy.stripe.com/3cs9CMdOHeWlf60cMO',
-  3: 'https://buy.stripe.com/3csg1a8uneWl4rmdQT',
-  4: 'https://buy.stripe.com/4gw5mwcKD9C1ga47sw',
-  5: 'https://buy.stripe.com/fZe3eobGz15vga4149'
-};
+      1: 'https://buy.stripe.com/dR6g1a8un9C1e1W8ww',
+      2: 'https://buy.stripe.com/3cs9CMdOHeWlf60cMO',
+      3: 'https://buy.stripe.com/3csg1a8uneWl4rmdQT',
+      4: 'https://buy.stripe.com/4gw5mwcKD9C1ga47sw',
+      5: 'https://buy.stripe.com/fZe3eobGz15vga4149'
+      // Ajoute d'autres liens si besoin
+    };
 
     function updateTotal() {
       const startDate = new Date(startInput.value);
@@ -190,20 +183,18 @@
         payLink.style.pointerEvents = 'auto';
         payLink.style.opacity = 1;
 
-        // Option : rediriger vers un lien Stripe avec montant personnalisé si dynamique
-        // Ici, le lien Stripe est fixe. Tu peux créer plusieurs liens prédéfinis pour 1, 2, 3 nuits...
+        if (stripeLinks[nights]) {
+          payLink.href = stripeLinks[nights];
+        } else {
+          payLink.href = '#';
+          alert("Ce nombre de nuits n'est pas encore disponible.");
+        }
       } else {
         totalDiv.textContent = 'Total : 0 €';
         payLink.style.pointerEvents = 'none';
         payLink.style.opacity = 0.5;
-      }
-      if (stripeLinks[nights]) {
-        payLink.href = stripeLinks[nights];
-      } else {
         payLink.href = '#';
-        alert(\"Ce nombre de nuits n'est pas encore disponible.\");
       }
-
     }
 
     startInput.addEventListener('change', updateTotal);
