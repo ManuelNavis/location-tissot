@@ -54,6 +54,48 @@
   line-height: 1.6;
 }
 
+.slideshow-container {
+  position: relative;
+  max-width: 300px;
+  margin: auto;
+}
+
+.mySlides {
+  display: none;
+}
+
+.mySlides img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 45%;
+  width: auto;
+  padding: 10px;
+  margin-top: -22px;
+  color: #333;
+  font-weight: bold;
+  font-size: 24px;
+  border-radius: 0 3px 3px 0;
+  background-color: rgba(255,255,255,0.8);
+  user-select: none;
+  transition: 0.3s;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: #ddd;
+}
+
+    
     .details {
       margin-top: 2rem;
       line-height: 1.6;
@@ -134,6 +176,39 @@
   </header>
 
   <section class="logement">
+    <div class="slideshow-container">
+  <div class="mySlides fade">
+    <img src="Images/photos lieu/house-3386450_1280.jpg" alt="Photo de l'entrer">
+  </div>
+  <div class="mySlides fade">
+    <img src="Images/photos lieu/cloudy-2491707_1280.jpg" alt="Photo de la vue">
+  </div>
+  <div class="mySlides fade">
+    <img src="Images/photos lieu/pool-5055009_1280.jpg" alt="Photo de la piscine">
+  </div>
+  <div class="mySlides fade">
+    <img src="Images/photos lieu/kitchen-2165756_1280.jpg" alt="Photo de la cuisine">
+  </div>
+  <div class="mySlides fade">
+    <img src="Images/photos lieu/furniture-998265_1280.jpg" alt="Photo du salon">
+  </div>
+  <div class="mySlides fade">
+    <img src="Images/photos lieu/bathroom-1622403_1280.jpg" alt="Photo de la salle de bain">
+  </div>
+  <div class="mySlides fade">
+    <img src="Images/photos lieu/bedroom-5664221_1280.jpg" alt="Photo de la chambre 1">
+  </div>
+  <div class="mySlides fade">
+    <img src="Images/photos lieu/bedroom-5664221_1280.jpg" alt="Photo de la chambre 2">
+  </div>
+  <div class="mySlides fade">
+    <img src="Images/photos lieu/bedroom-5664221_1280.jpg" alt="Photo de la chambre 3"> 
+  </div>
+
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+</div>
+
   <div class="images">
       <img src="Images/photos lieu/house-3386450_1280.jpg" alt="Photo de l'entrer">
       <img src="Images/photos lieu/cloudy-2491707_1280.jpg" alt="Photo de la vue">
@@ -227,5 +302,28 @@
     startInput.addEventListener('change', updateTotal);
     endInput.addEventListener('change', updateTotal);
   </script>
+  <script>
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function showSlides(n) {
+    let i;
+    const slides = document.getElementsByClassName("mySlides");
+
+    if (n > slides.length) { slideIndex = 1; }
+    if (n < 1) { slideIndex = slides.length; }
+
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+  }
+</script>
+
 </body>
 </html>
