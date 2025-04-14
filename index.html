@@ -197,6 +197,13 @@
         payLink.style.pointerEvents = 'none';
         payLink.style.opacity = 0.5;
       }
+      if (stripeLinks[nights]) {
+        payLink.href = stripeLinks[nights];
+      } else {
+        payLink.href = '#';
+        alert(\"Ce nombre de nuits n'est pas encore disponible.\");
+      }
+
     }
 
     startInput.addEventListener('change', updateTotal);
