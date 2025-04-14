@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="Images/favicon.png" />
   <title>Location - Logement TISSOT</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: white;
-      color: #4082c4;
+      background-color: #f7f7f7;
+      color: #333;
     }
 
     header {
-      background-color: #4082c4;
+      background-color: White;
       color: white;
       padding: 2rem;
       text-align: center;
@@ -26,21 +26,31 @@
       margin: auto;
     }
 
-    .images {
+    .logement {
       display: flex;
-      gap: 1rem;
       flex-wrap: wrap;
+      gap: 2rem;
       justify-content: center;
+      margin-top: 2rem;
     }
 
-    .images img {
-      width: 280px;
+    .logement .images {
+      flex: 1 1 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .logement .images img {
+      width: 100%;
+      max-width: 280px;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    .details {
-      margin-top: 2rem;
+    .logement .details {
+      flex: 1 1 40%;
       line-height: 1.6;
     }
 
@@ -55,24 +65,12 @@
       margin: 0.5rem;
     }
 
-    reserve-total {
+    .reserve-total {
       margin-top: 1rem;
       font-size: 1.2rem;
       font-weight: bold;
     }
 
-    .map {
-      margin-top: 3rem;
-      text-align: center;
-    }
-
-    .map iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-      border-radius: 8px;
-    }
-    
     .reserve a.button {
       display: inline-block;
       background-color: #4caf50;
@@ -89,9 +87,16 @@
       background-color: #45a049;
     }
 
-    .planning {
-      margin-top: 4rem;
+    .map {
+      margin-top: 3rem;
       text-align: center;
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 8px;
     }
 
     footer {
@@ -99,9 +104,9 @@
       margin-top: 4rem;
       padding: 1rem;
       font-size: 0.9rem;
-      color: #4082c4;
-      background-color: #ffffff;
+      color: #777;
     }
+
     .footer-logo {
       margin-top: 1rem;
     }
@@ -113,33 +118,29 @@
 </head>
 <body>
   <header>
-    
+    <img src="images/logo.png" alt="Logo TISSOT" style="height: 80px;"><br>
     <h1>Logement TISSOT à Louer - Volny Lamentin</h1>
     <p>Profitez d’un logement calme et lumineux à la campagne proche des rivières </p>
   </header>
 
   <div class="container">
-    <section class="images">
-      <img src="Images/photos lieu/house-3386450_1280.jpg" alt="Photo de l'entrer">
-      <img src="Images/photos lieu/cloudy-2491707_1280.jpg" alt="Photo de la vue">
-      <img src="Images/photos lieu/pool-5055009_1280.jpg" alt="Photo de la piscine">
-      <img src="Images/photos lieu/kitchen-2165756_1280.jpg" alt="Photo de la cuisine">
-      <img src="Images/photos lieu/furniture-998265_1280.jpg" alt="Photo du salon">
-      <img src="Images/photos lieu/bathroom-1622403_1280.jpg" alt="Photo de la salle de bain">
-      <img src="Images/photos lieu/bedroom-5664221_1280.jpg" alt="Photo de la chambre 1">
-      <img src="Images/photos lieu/bedroom-5664221_1280.jpg" alt="Photo de la chambre 2">
-      <img src="Images/photos lieu/bedroom-5664221_1280.jpg" alt="Photo de la chambre 3">
-    </section>
+    <section class="logement">
+      <div class="images">
+        <img src="https://source.unsplash.com/featured/?apartment,interior" alt="Photo du logement 1">
+        <img src="https://source.unsplash.com/featured/?cozy,room" alt="Photo du logement 2">
+        <img src="https://source.unsplash.com/featured/?cozy,room" alt="Photo du logement 3">
+      </div>
 
-    <section class="details">
-      <h2>Détails du logement</h2>
-      <ul>
-        <li>📍 Volny, Lamentin 97129 GUADELOUPE</li>
-        <li>🛏️ 3 chambres, 1 salle de bain, cuisine équipée</li>
-        <li>📐 Idéal pour 2 personnes ou une petite famille</li>
-        <li>📶 WiFi, climatisation, Ventilateur de plafond, TV, linge fourni</li>
-        <li>💰 70€ / nuit</li>
-      </ul>
+      <div class="details">
+        <h2>Détails du logement</h2>
+        <ul>
+          <li>📍 Volny, Lamentin 97129 GUADELOUPE</li>
+          <li>🛏️ 3 chambres, 1 salle de bain, cuisine équipée</li>
+          <li>📐 Idéal pour 2 personnes ou une petite famille</li>
+          <li>📶 WiFi, climatisation, TV, linge fourni</li>
+          <li>💰 50€ / nuit</li>
+        </ul>
+      </div>
     </section>
 
     <section class="map">
@@ -147,8 +148,7 @@
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.7456272829386!2d-61.61152502403344!3d16.270265084427988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c135d6f01ec03db%3A0xf0f6f8e71209f0ef!2sVolny%2C%20Lamentin%2097129%2C%20Guadeloupe!5e0!3m2!1sfr!2sfr!4v1712847751435!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
-    
-<section class="reserve">
+    <section class="reserve">
       <h2>Réserver maintenant</h2>
 
       <label>Date d'arrivée : <input type="date" id="start"></label><br>
@@ -156,31 +156,32 @@
 
       <div class="reserve-total" id="total">Total : 0 €</div>
 
-      <!-- Remplace ce lien Stripe par le tien -->
       <a href="#" id="payLink" class="button" style="pointer-events: none; opacity: 0.5;">Payer avec Stripe</a>
     </section>
-    
-   <footer>
+  </div>
+
+  <footer>
     &copy; 2025 TISSOT Volny Lamentin. Tous droits réservés.
     <div class="footer-logo">
-      <img src="Images/logement Tissot.png" alt="Logo TISSOT">
+      <img src="images/logo.png" alt="Logo TISSOT">
     </div>
   </footer>
-     <script>
+
+  <script>
     const startInput = document.getElementById('start');
     const endInput = document.getElementById('end');
     const totalDiv = document.getElementById('total');
     const payLink = document.getElementById('payLink');
 
-    const pricePerNight = 70; // en €
+    const pricePerNight = 50; // en €
 
     // Liens Stripe prédéfinis pour différentes durées
     const stripeLinks = {
-      1: 'https://buy.stripe.com/dR6g1a8un9C1e1W8ww',
-      2: 'https://buy.stripe.com/3cs9CMdOHeWlf60cMO',
-      3: 'https://buy.stripe.com/3csg1a8uneWl4rmdQT',
-      4: 'https://buy.stripe.com/4gw5mwcKD9C1ga47sw',
-      5: 'https://buy.stripe.com/fZe3eobGz15vga4149'
+      1: 'https://buy.stripe.com/test_1nuit',
+      2: 'https://buy.stripe.com/test_2nuits',
+      3: 'https://buy.stripe.com/test_3nuits',
+      4: 'https://buy.stripe.com/test_4nuits',
+      5: 'https://buy.stripe.com/test_5nuits'
       // Ajoute d'autres liens si besoin
     };
 
