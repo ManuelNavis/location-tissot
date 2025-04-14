@@ -170,7 +170,13 @@
     const payLink = document.getElementById('payLink');
 
     const pricePerNight = 70; // en €
-    const stripeBaseLink = 'https://buy.stripe.com/dR6g1a8un9C1e1W8ww'; // à remplacer
+    const stripeLinks = {
+  1: 'https://buy.stripe.com/dR6g1a8un9C1e1W8ww',
+  2: 'https://buy.stripe.com/3cs9CMdOHeWlf60cMO',
+  3: 'https://buy.stripe.com/3csg1a8uneWl4rmdQT',
+  4: 'https://buy.stripe.com/4gw5mwcKD9C1ga47sw',
+  5: 'https://buy.stripe.com/fZe3eobGz15vga4149'
+};
 
     function updateTotal() {
       const startDate = new Date(startInput.value);
