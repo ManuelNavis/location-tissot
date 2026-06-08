@@ -1,394 +1,276 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="Images/favicon.png" />
-  <title>Location - Logement TISSOT</title>
+<!doctype html>
+<html lang="fr"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Location Vacances</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: white;
-      color: #4082c4;
-    }
-
-    header {
-      background-color: #4082c4;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-      position: relative;
-      /*background-image: url('Images/coveer.jpg'); /* remplace par ton chemin */
-      background-size: cover;
-      background-position: center;
-      padding: 4rem 2rem;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /*background-color: #4082c4; /* couche sombre à 40% d’opacité */
-  z-index: 0;
-}
-
-header * {
-  position: relative;
-  z-index: 1;
-}
-
-    .images {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .images img {
-      width: 480px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .logement {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-.logement .images {
-  flex: 1 1 50%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
-}
-
-.logement .details {
-  flex: 1 1 40%;
-  line-height: 1.6;
-}
-
-.slideshow-container {
-  position: relative;
-  max-width: 750px;
-  margin: auto;
-}
-
-.mySlides {
-  display: none;
-}
-
-.mySlides img {
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 45%;
-  width: auto;
-  padding: 10px;
-  margin-top: -22px;
-  color: #333;
-  font-weight: bold;
-  font-size: 24px;
-  border-radius: 0 3px 3px 0;
-  background-color: rgba(255,255,255,0.8);
-  user-select: none;
-  transition: 0.3s;
-}
-
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-  background-color: #ddd;
-}
-
-    
-    .details {
-      margin-top: 2rem;
-      line-height: 1.6;
-    }
-
-    .reserve {
-      margin-top: 3rem;
-      text-align: center;
-    }
-
-    .reserve input, .reserve button {
-      padding: 0.5rem;
-      font-size: 1rem;
-      margin: 0.5rem;
-    }
-
-    reserve-total {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-
-    .map {
-      margin-top: 3rem;
-      text-align: center;
-    }
-
-    .map iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-      border-radius: 8px;
-    }
-    
-    .reserve a.button {
-      display: inline-block;
-      background-color: #4caf50;
-      color: white;
-      padding: 1rem 2rem;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 1.2rem;
-      transition: background-color 0.3s ease;
-      margin-top: 1rem;
-    }
-
-    .reserve a.button:hover {
-      background-color: #45a049;
-    }
-
-    .planning {
-      margin-top: 4rem;
-      text-align: center;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 4rem;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #ffffff;
-      background-color: #4082c4;
-    }
-    .footer-logo {
-      margin-top: 1rem;
-    }
-
-    .footer-logo img {
-      height: 60px;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    
-    <h1>Logement TISSOT à Louer - Volny Lamentin</h1>
-    <p>Profitez d’un logement calme et lumineux à la campagne proche des rivières </p>
+        body { font-family: 'DM Sans', sans-serif; }
+        .font-display { font-family: 'Playfair Display', serif; }
+        .hero-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5)); }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5rem; }
+        .calendar-day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 500; }
+        .calendar-day.available { background-color: #d1fae5; color: #065f46; }
+        .calendar-day.booked { background-color: #fee2e2; color: #991b1b; }
+        .calendar-day.other-month { background-color: #f3f4f6; color: #9ca3af; }
+        .calendar-day.today { border: 2px solid #0d9488; }
+    </style>
+  <script src="/_sdk/resizing_sdk.js" type="text/javascript"></script>
+ <script src="/_sdk/telemetry_sdk.js"></script></head>
+ <body data-template-id="__page-root" class="w-full min-h-screen" style="background: rgb(253, 252, 250);"><!-- Hero -->
+  <header class="relative w-full" style="height: calc(80 * min(var(--vh, 1vh), 1vh));"><img data-template-id="hero-image" class="canva-image absolute inset-0 w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/22034274/pexels-photo-22034274.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920" alt="Charming villa surrounded by palm trees, exuding Mediterranean elegance">
+   <div class="hero-overlay absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+    <h1 data-template-id="hero-title" class="canva-text font-display text-white text-5xl md:text-6xl font-bold drop-shadow-lg" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">Logement TISSOT à Louer - Volny Lamentin</h1>
+    <p data-template-id="hero-subtitle" class="canva-text text-white/90 text-xl mt-4 max-w-xl drop-shadow" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 20px;">Profitez d’un logement calme et lumineux à la campagne proche des rivières</p><a href="#reservation" data-template-id="hero-cta" class="canva-button mt-8 px-8 py-3 rounded-full text-lg font-medium shadow-lg hover:scale-105 transition-transform" style="background: rgb(13, 148, 136); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Réserver maintenant</a>
+   </div>
   </header>
+  <main class="w-full"><!-- Description -->
+   <section class="max-w-4xl mx-auto px-6 py-16">
+    <h2 data-template-id="desc-title" class="canva-text font-display text-center mb-6" style="color: rgb(26, 26, 26); font-weight: 700; font-style: normal; font-size: 24px;">Votre escapade tropicale</h2>
+    <p data-template-id="desc-text" class="canva-text text-center leading-relaxed max-w-2xl mx-auto" style="color: rgb(74, 74, 74); font-weight: 400; font-style: normal; font-size: 17px;">Situé au cœur de Volny, dans la commune du Lamentin en Guadeloupe (97129), ce charmant appartement vous offre un cadre paisible et accueillant. Il est idéal pour se ressourcer à la campagne tout en restant proche des commodités et des magnifiques rivières des environs.
 
-  <section class="logement">
-    <div class="images">
-    <div class="slideshow-container">
-  <div class="mySlides fade">
-    <img src="Images/photos lieu/house-3386450_1280.jpg" alt="Photo de l'entrer">
-  </div>
-  <div class="mySlides fade">
-    <img src="Images/photos lieu/cloudy-2491707_1280.jpg" alt="Photo de la vue">
-  </div>
-  <div class="mySlides fade">
-    <img src="Images/photos lieu/pool-5055009_1280.jpg" alt="Photo de la piscine">
-  </div>
-  <div class="mySlides fade">
-    <img src="Images/photos lieu/kitchen-2165756_1280.jpg" alt="Photo de la cuisine">
-  </div>
-  <div class="mySlides fade">
-    <img src="Images/photos lieu/furniture-998265_1280.jpg" alt="Photo du salon">
-  </div>
-  <div class="mySlides fade">
-    <img src="Images/photos lieu/bathroom-1622403_1280.jpg" alt="Photo de la salle de bain">
-  </div>
-  <div class="mySlides fade">
-    <img src="Images/photos lieu/bedroom-5664221_1280.jpg" alt="Photo de la chambre 1">
-  </div>
-  <div class="mySlides fade">
-    <img src="Images/photos lieu/bedroom-5664221_1280.jpg" alt="Photo de la chambre 2">
-  </div>
-  <div class="mySlides fade">
-    <img src="Images/photos lieu/bedroom-5664221_1280.jpg" alt="Photo de la chambre 3"> 
-  </div>
-
-  <a class="prev" onclick="plusSlides(-1)">❮</a>
-  <a class="next" onclick="plusSlides(1)">❯</a>
-</div>
-</div>
-  <div class="details">
-    <ul>
-        <section class="details">
-  <h2>À propos du logement</h2>
-  <p>
-    Situé au cœur de <strong>Volny</strong>, dans la commune du <strong>Lamentin</strong> en <strong>Guadeloupe (97129)</strong>, ce charmant appartement vous offre un cadre paisible et accueillant. Il est idéal pour se ressourcer à la campagne tout en restant proche des commodités et des magnifiques rivières des environs.
-  </p>
-  <p>
-    Le logement comprend <strong>3 chambres confortables</strong>, une <strong>salle de bain moderne</strong> et une <strong>cuisine entièrement équipée</strong> vous permettant de préparer vos repas en toute autonomie.
-  </p>
-  <p>
-    Conçu pour une <strong>petite famille</strong>, ce logement allie confort et praticité. Vous bénéficierez de toutes les commodités nécessaires :
-  </p>
-  <ul>
-    <li>📶 Connexion WiFi haut débit</li>
-    <li>❄️ Climatisation & ventilateur de plafond</li>
-    <li>📺 Télévision</li>
-    <li>🧺 Linge de maison fourni (draps, serviettes...)</li>
-  </ul>
-  <p>
-    💰 Le tarif est de <strong>70 € par nuit</strong>, avec réservation en ligne simple et sécurisée.
-  </p>
-</section>
-
-      </ul>
-  </div>
-</section>
-
-  <section class="calendar">
-  <h2>Disponibilités</h2>
-  <iframe src="https://calendar.google.com/calendar/embed?src=68eebdbc38074da50041d1547419e7e2a45f9360e1d0fc0589ea7facfca65557%40group.calendar.google.com&ctz=America%2FMartinique"
-          style="border: 0"
-          width="100%" height="600"
-          frameborder="0"
-          scrolling="no"></iframe>
-</section>
-
-  
-<section class="reserve">
-      <h2>Réserver maintenant</h2>
-
-      <label>Date d'arrivée : <input type="date" id="start"></label><br>
-      <label>Date de départ : <input type="date" id="end"></label>
-
-      <div class="reserve-total" id="total">Total : 0 €</div>
-
-      <!-- Remplace ce lien Stripe par le tien -->
-      <a href="#" id="payLink" class="button" style="pointer-events: none; opacity: 0.5;">Payer avec Stripe</a>
-</section>
-
-      <section class="map">
-          <h2>Localisation</h2>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.7456272829386!2d-61.61152502403344!3d16.270265084427988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c135d6f01ec03db%3A0xf0f6f8e71209f0ef!2sVolny%2C%20Lamentin%2097129%2C%20Guadeloupe!5e0!3m2!1sfr!2sfr!4v1712847751435!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </section>
-    
-   <footer>
-    &copy; 2025 TISSOT Volny Lamentin. Tous droits réservés.
-    <div class="footer-logo">
-      <img src="Images/logement Tissot négatif.png" alt="Logo TISSOT">
+Le logement comprend 3 chambres confortables, une salle de bain moderne et une cuisine entièrement équipée vous permettant de préparer vos repas en toute autonomie.</p>
+   </section><!-- Gallery -->
+   <section class="max-w-6xl mx-auto px-6 pb-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3"><img data-template-id="gallery-1" class="canva-image w-full h-48 md:h-64 object-cover rounded-xl" loading="lazy" src="https://images.pexels.com/photos/18762636/pexels-photo-18762636.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Salon lumineux et moderne"> <img data-template-id="gallery-2" class="canva-image w-full h-48 md:h-64 object-cover rounded-xl" loading="lazy" src="https://images.pexels.com/photos/16436968/pexels-photo-16436968.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Chambre avec vue tropicale"> <img data-template-id="gallery-3" class="canva-image w-full h-48 md:h-64 object-cover rounded-xl" loading="lazy" src="https://images.pexels.com/photos/19899084/pexels-photo-19899084.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Cuisine moderne et équipée"> <img data-template-id="gallery-4" class="canva-image w-full h-48 md:h-64 object-cover rounded-xl" loading="lazy" src="https://images.pexels.com/photos/11352044/pexels-photo-11352044.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Terrasse avec vue sur l'océan turquoise">
     </div>
+   </section><!-- Équipements -->
+   <section data-template-id="amenities-section" class="canva-section w-full py-16 px-6" style="background: rgb(240, 253, 250);">
+    <div class="max-w-4xl mx-auto">
+     <h2 data-template-id="amenities-title" class="canva-text font-display text-center mb-10" style="color: rgb(26, 26, 26); font-weight: 700; font-style: normal; font-size: 24px;">Équipements</h2>
+     <div class="grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
+      <div class="flex flex-col items-center gap-2">
+       <i data-lucide="wifi" class="w-8 h-8"></i><span data-template-id="amenity-1" class="canva-text" style="color: rgb(51, 65, 85); font-weight: 400; font-style: normal; font-size: 16px;">Wi-Fi haut débit</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+       <i data-lucide="shirt" class="w-8 h-8"></i><span data-template-id="amenity-2" class="canva-text" style="color: rgb(51, 65, 85); font-weight: 400; font-style: normal; font-size: 16px;">Linge de maison fourni 
+(draps, serviettes...)</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+       <i data-lucide="wind" class="w-8 h-8"></i><span data-template-id="amenity-3" class="canva-text" style="color: rgb(51, 65, 85); font-weight: 400; font-style: normal; font-size: 16px;">Climatisation</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+       <i data-lucide="waves" class="w-8 h-8"></i><span data-template-id="amenity-4" class="canva-text" style="color: rgb(51, 65, 85); font-weight: 400; font-style: normal; font-size: 16px;">Piscine</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+       <i data-lucide="utensils" class="w-8 h-8"></i><span data-template-id="amenity-5" class="canva-text" style="color: rgb(51, 65, 85); font-weight: 400; font-style: normal; font-size: 16px;">Cuisine équipée</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+       <i data-lucide="tv" class="w-8 h-8"></i><span data-template-id="amenity-6" class="canva-text" style="color: rgb(51, 65, 85); font-weight: 400; font-style: normal; font-size: 16px;">Smart TV</span>
+      </div>
+     </div>
+    </div>
+   </section><!-- Calendrier de disponibilité -->
+   <section class="max-w-2xl mx-auto px-6 py-16">
+    <h2 data-template-id="calendar-title" class="canva-text font-display text-center mb-8" style="color: rgb(26, 26, 26); font-weight: 700; font-style: normal; font-size: 24px;">Disponibilité</h2>
+    <div class="bg-white rounded-lg p-6 shadow-md">
+     <div class="flex items-center justify-between mb-6">
+      <button type="button" id="prev-month" class="p-2 hover:bg-gray-100 rounded-lg transition-colors" aria-label="Mois précédent"> <i data-lucide="chevron-left" class="w-5 h-5"></i> </button>
+      <h3 id="month-year" class="font-semibold text-lg min-w-48 text-center"></h3><button type="button" id="next-month" class="p-2 hover:bg-gray-100 rounded-lg transition-colors" aria-label="Mois suivant"> <i data-lucide="chevron-right" class="w-5 h-5"></i> </button>
+     </div>
+     <div class="mb-4 flex gap-4 text-sm">
+      <div class="flex items-center gap-2">
+       <div class="w-4 h-4 rounded" style="background-color: #d1fae5;"></div><span data-template-id="calendar-available" class="canva-text" style="color: rgb(6, 95, 70); font-weight: 400; font-style: normal; font-size: 16px;">Disponible</span>
+      </div>
+      <div class="flex items-center gap-2">
+       <div class="w-4 h-4 rounded" style="background-color: #fee2e2;"></div><span data-template-id="calendar-booked" class="canva-text" style="color: rgb(153, 27, 27); font-weight: 400; font-style: normal; font-size: 16px;">Réservé</span>
+      </div>
+     </div>
+     <div class="mb-4 grid grid-cols-7 gap-2 text-center text-sm font-semibold text-gray-600">
+      <div>
+       Lun
+      </div>
+      <div>
+       Mar
+      </div>
+      <div>
+       Mer
+      </div>
+      <div>
+       Jeu
+      </div>
+      <div>
+       Ven
+      </div>
+      <div>
+       Sam
+      </div>
+      <div>
+       Dim
+      </div>
+     </div>
+     <div id="calendar-grid" class="calendar-grid"></div>
+    </div>
+   </section><!-- Localisation -->
+   <section class="max-w-2xl mx-auto px-6 py-16">
+    <h2 data-template-id="location-title" class="canva-text font-display text-center mb-8" style="color: rgb(26, 26, 26); font-weight: 700; font-style: normal; font-size: 24px;">Localisation</h2>
+    <div class="bg-white rounded-lg overflow-hidden shadow-md"><iframe src="https://www.openstreetmap.org/export/embed.html?bbox=[-61.5255,14.7295,-61.5200,14.7330]&amp;layer=mapnik&amp;marker=14.7313,-61.5228" class="w-full h-96 border-0"></iframe>
+     <div class="p-6 flex items-start gap-4"><i data-lucide="map-pin" class="w-6 h-6 text-teal-600 flex-shrink-0 mt-1"></i>
+      <div>
+       <p data-template-id="location-address" class="canva-text font-medium" style="color: rgb(26, 26, 26); font-weight: 400; font-style: normal; font-size: 16px;">Volny, 97129 Lamentin, Guadeloupe</p>
+       <p class="text-gray-600 text-sm mt-2">Volny est situé dans la commune du Lamentin en Guadeloupe, offrant un accès facile aux rivières, aux activités nautiques et à la nature tropicale environnante.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Réservation -->
+   <section id="reservation" class="max-w-2xl mx-auto px-6 py-16">
+    <h2 data-template-id="form-title" class="canva-text font-display text-center mb-8" style="color: rgb(26, 26, 26); font-weight: 700; font-style: normal; font-size: 24px;">Demande de réservation</h2>
+    <form id="booking-form" class="space-y-4">
+     <div><label data-template-id="label-name" class="canva-text block mb-1 font-medium" for="guest-name" style="color: rgb(26, 26, 26); font-weight: 400; font-style: normal; font-size: 16px;">Nom complet</label> <input id="guest-name" type="text" required="" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-500 focus:outline-none">
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div><label data-template-id="label-email" class="canva-text block mb-1 font-medium" for="guest-email" style="color: rgb(26, 26, 26); font-weight: 400; font-style: normal; font-size: 16px;">Email</label> <input id="guest-email" type="email" required="" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-500 focus:outline-none">
+      </div>
+      <div><label data-template-id="label-phone" class="canva-text block mb-1 font-medium" for="guest-phone" style="color: rgb(26, 26, 26); font-weight: 400; font-style: normal; font-size: 16px;">Téléphone</label> <input id="guest-phone" type="tel" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-500 focus:outline-none">
+      </div>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div><label data-template-id="label-checkin" class="canva-text block mb-1 font-medium" for="checkin" style="color: rgb(26, 26, 26); font-weight: 400; font-style: normal; font-size: 16px;">Arrivée</label> <input id="checkin" type="date" required="" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-500 focus:outline-none">
+      </div>
+      <div><label data-template-id="label-checkout" class="canva-text block mb-1 font-medium" for="checkout" style="color: rgb(26, 26, 26); font-weight: 400; font-style: normal; font-size: 16px;">Départ</label> <input id="checkout" type="date" required="" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-500 focus:outline-none">
+      </div>
+      <div><label data-template-id="label-guests" class="canva-text block mb-1 font-medium" for="guests-count" style="color: rgb(26, 26, 26); font-weight: 400; font-style: normal; font-size: 16px;">Voyageurs</label> <input id="guests-count" type="number" min="1" max="10" value="2" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-500 focus:outline-none">
+      </div>
+     </div>
+     <div><label data-template-id="label-message" class="canva-text block mb-1 font-medium" for="message" style="color: rgb(26, 26, 26); font-weight: 400; font-style: normal; font-size: 16px;">Message (optionnel)</label> <textarea id="message" rows="3" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-500 focus:outline-none"></textarea>
+     </div><button data-template-id="submit-btn" type="submit" class="canva-button w-full py-3 rounded-lg font-medium text-lg hover:opacity-90 transition-opacity" style="background: rgb(13, 148, 136); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Envoyer ma demande</button>
+    </form>
+    <div id="success-msg" class="hidden mt-6 p-4 rounded-lg bg-green-50 border border-green-200 text-center">
+     <p data-template-id="success-text" class="canva-text text-green-800 font-medium" style="color: rgb(22, 101, 52); font-weight: 400; font-style: normal; font-size: 16px;">Votre demande a bien été envoyée ! Nous vous répondrons très vite.</p>
+    </div>
+    <div id="error-msg" class="hidden mt-6 p-4 rounded-lg bg-red-50 border border-red-200 text-center">
+     <p class="text-red-700">Une erreur est survenue. Veuillez réessayer.</p>
+    </div>
+   </section>
+  </main>
+  <footer data-template-id="footer-section" class="canva-footer w-full py-8 text-center" style="background: rgb(26, 26, 26);">
+   <p data-template-id="footer-text" class="canva-text text-sm" style="color: rgb(163, 163, 163); font-weight: 400; font-style: normal; font-size: 16px;">© 2026 Logement TISSOT — Guadeloupe</p>
   </footer>
-     <script>
-    const startInput = document.getElementById('start');
-    const endInput = document.getElementById('end');
-    const totalDiv = document.getElementById('total');
-    const payLink = document.getElementById('payLink');
-
-    const pricePerNight = 70; // en €
-
-    // Liens Stripe prédéfinis pour différentes durées
-    const stripeLinks = {
-      1: 'https://buy.stripe.com/dR6g1a8un9C1e1W8ww',
-      2: 'https://buy.stripe.com/3cs9CMdOHeWlf60cMO',
-      3: 'https://buy.stripe.com/3csg1a8uneWl4rmdQT',
-      4: 'https://buy.stripe.com/4gw5mwcKD9C1ga47sw',
-      5: 'https://buy.stripe.com/fZe3eobGz15vga4149',
-      6: 'https://buy.stripe.com/cN2cOY11V9C14rm14a',
-      7: 'https://buy.stripe.com/4gweX6fWPcOd0b66ov',
-      8: 'https://buy.stripe.com/dR6cOYfWP8xX0b6cMU',
-      9: 'https://buy.stripe.com/00g02c11V7tT9LGfZ7',
-      10: 'https://buy.stripe.com/28obKU3a329z4rmcMW',
-      11: 'https://buy.stripe.com/4gw5mwfWPg0pbTO6oz',
-      12: 'https://buy.stripe.com/7sI3eo4e79C11facMY',
-      13: 'https://buy.stripe.com/fZe8yIaCv8xXaPKeV7',
-      14: 'https://buy.stripe.com/eVa3eo11Vg0p7Dy28m',
-      15: 'https://buy.stripe.com/7sI4isaCvg0p8HCfZd',
-      16: 'https://buy.stripe.com/14k02c8undShga400g',
-      17: 'https://buy.stripe.com/6oEbKU4e715v3niaEV',
-      18: 'https://buy.stripe.com/5kAaGQ25ZeWl4rm3cu',
-      19: 'https://buy.stripe.com/aEUdT2bGz15vga428r',
-      20: 'https://buy.stripe.com/3cs16gaCv5lL4rmdRa',
-      21: 'https://buy.stripe.com/7sIaGQh0T15vf6028t',
-      22: 'https://buy.stripe.com/fZebKU9yrbK92je14q',
-      23: 'https://buy.stripe.com/6oEg1a11Vg0p4rm3cz',
-      24: 'https://buy.stripe.com/14keX63a3cOdga4eVi',
-      25: 'https://buy.stripe.com/cN202ceSL01r8HCcNb',
-      26: 'https://buy.stripe.com/00gcOY5ib7tTcXSfZo',
-      27: 'https://buy.stripe.com/dR6aGQcKD6pP7Dy28z',
-      28: 'https://buy.stripe.com/4gw02ceSL5lLga400s',
-      29: 'https://buy.stripe.com/dR67uE7qj29zaPKbJb',
-      30: 'https://buy.stripe.com/cN28yI25ZdSh4rmaF8',
-      31: 'https://buy.stripe.com/fZe9CM9yrdSh2jeaF9'
-      // Ajoute d'autres liens si besoin
-    };
-
-    function updateTotal() {
-      const startDate = new Date(startInput.value);
-      const endDate = new Date(endInput.value);
-      const timeDiff = endDate - startDate;
-      const nights = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-
-      if (nights > 0) {
-        const total = nights * pricePerNight;
-        totalDiv.textContent = `Total : ${total} € pour ${nights} nuit(s)`;
-        payLink.style.pointerEvents = 'auto';
-        payLink.style.opacity = 1;
-
-        if (stripeLinks[nights]) {
-          payLink.href = stripeLinks[nights];
-        } else {
-          payLink.href = '#';
-          alert("Ce nombre de nuits n'est pas encore disponible.");
-        }
-      } else {
-        totalDiv.textContent = 'Total : 0 €';
-        payLink.style.pointerEvents = 'none';
-        payLink.style.opacity = 0.5;
-        payLink.href = '#';
-      }
-    }
-
-    startInput.addEventListener('change', updateTotal);
-    endInput.addEventListener('change', updateTotal);
-  </script>
+  <script src="/_sdk/editing_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
   <script>
-  let slideIndex = 1;
-  showSlides(slideIndex);
+        lucide.createIcons();
 
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
+        // Blocked dates configuration (YYYY-MM-DD format)
+        const blockedDates = new Set([
+            '2026-06-15', '2026-06-16', '2026-06-17',
+            '2026-06-20', '2026-06-21', '2026-06-22', '2026-06-23',
+            '2026-07-10', '2026-07-11', '2026-07-12'
+        ]);
 
-  function showSlides(n) {
-    let i;
-    const slides = document.getElementsByClassName("mySlides");
+        let currentDate = new Date(2026, 4, 28);
 
-    if (n > slides.length) { slideIndex = 1; }
-    if (n < 1) { slideIndex = slides.length; }
+        function renderCalendar() {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            
+            // Update month/year display
+            const options = { month: 'long', year: 'numeric', locale: 'fr-FR' };
+            document.getElementById('month-year').textContent = 
+                currentDate.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+            
+            // Get first day and number of days in month
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const daysInPrevMonth = new Date(year, month, 0).getDate();
+            
+            const grid = document.getElementById('calendar-grid');
+            grid.innerHTML = '';
+            
+            // Previous month's days
+            for (let i = firstDay === 0 ? 6 : firstDay - 1; i > 0; i--) {
+                const day = daysInPrevMonth - i + 1;
+                const cell = document.createElement('div');
+                cell.className = 'calendar-day other-month';
+                cell.textContent = day;
+                grid.appendChild(cell);
+            }
+            
+            // Current month's days
+            const today = new Date();
+            const isCurrentMonth = today.getFullYear() === year && today.getMonth() === month;
+            
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const cell = document.createElement('div');
+                cell.className = 'calendar-day';
+                cell.textContent = day;
+                
+                if (isCurrentMonth && day === today.getDate()) {
+                    cell.classList.add('today');
+                }
+                
+                if (blockedDates.has(dateStr)) {
+                    cell.classList.add('booked');
+                } else {
+                    cell.classList.add('available');
+                }
+                
+                grid.appendChild(cell);
+            }
+            
+            // Next month's days
+            const totalCells = grid.children.length;
+            const remainingCells = 42 - totalCells;
+            for (let day = 1; day <= remainingCells; day++) {
+                const cell = document.createElement('div');
+                cell.className = 'calendar-day other-month';
+                cell.textContent = day;
+                grid.appendChild(cell);
+            }
+            
+            lucide.createIcons();
+        }
 
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
+        document.getElementById('prev-month').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
 
-    slides[slideIndex - 1].style.display = "block";
-  }
-</script>
+        document.getElementById('next-month').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
 
-</body>
-</html>
+        renderCalendar();
+
+        const dataHandler = { onDataChanged(data) {} };
+
+        (async () => {
+            const res = await window.dataSdk.init(dataHandler);
+            if (res.isError) console.error('SDK init failed');
+        })();
+
+        document.getElementById('booking-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.style.opacity = '0.5';
+
+            const record = {
+                guest_name: document.getElementById('guest-name').value,
+                guest_email: document.getElementById('guest-email').value,
+                guest_phone: document.getElementById('guest-phone').value,
+                check_in: document.getElementById('checkin').value,
+                check_out: document.getElementById('checkout').value,
+                guests_count: parseInt(document.getElementById('guests-count').value, 10),
+                message: document.getElementById('message').value
+            };
+
+            const result = await window.dataSdk.create(record);
+            btn.disabled = false;
+            btn.style.opacity = '1';
+
+            if (result.isOk) {
+                document.getElementById('success-msg').classList.remove('hidden');
+                document.getElementById('error-msg').classList.add('hidden');
+                e.target.reset();
+            } else {
+                document.getElementById('error-msg').classList.remove('hidden');
+            }
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a087bef08b1152c0',t:'MTc4MDkyMDEyOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body></html>
