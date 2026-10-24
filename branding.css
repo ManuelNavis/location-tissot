@@ -1,0 +1,2 @@
+.footer__brand { display: inline-flex; align-items: center; gap: 12px; }
+.footer__brand img { display: block; width: 36px; height: 36px; object-fit: contain; flex: 0 0 36px; }
