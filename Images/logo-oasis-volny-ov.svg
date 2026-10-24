@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 116" role="img" aria-labelledby="title desc">
+  <title id="title">L’Oasis de Volny — proposition 2</title>
+  <desc id="desc">Logo typographique élégant avec un monogramme OV dans une arche, en vert profond et sable.</desc>
+  <g transform="translate(11 8)">
+    <path d="M10 92V43a34 34 0 0 1 68 0v49" fill="none" stroke="#b99b66" stroke-width="2.4"/>
+    <path d="M20 92h48" fill="none" stroke="#b99b66" stroke-width="1.5"/>
+    <text x="44" y="67" text-anchor="middle" fill="#173b35" font-family="Georgia, 'Times New Roman', serif" font-size="33" letter-spacing="-3">OV</text>
+    <circle cx="44" cy="82" r="2" fill="#b99b66"/>
+  </g>
+  <path d="M111 21v74" fill="none" stroke="#d9cfbb" stroke-width="1.2"/>
+  <g fill="#173b35">
+    <text x="133" y="62" font-family="Georgia, 'Times New Roman', serif" font-size="34" letter-spacing="2.4">L’OASIS</text>
+    <text x="136" y="86" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="500" letter-spacing="5.6">DE VOLNY</text>
+  </g>
+</svg>
