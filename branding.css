@@ -15,3 +15,9 @@
   .hero__brand img { width: min(300px, 74vw); }
   .footer__brand img { width: min(230px, 64vw); max-width: 230px; }
 }
+
+/* Taille demandée pour le logo dans la bannière principale. */
+.hero__brand img { width: min(440px, 82vw); }
+@media (max-width: 560px) {
+  .hero__brand img { width: min(340px, 82vw); }
+}
