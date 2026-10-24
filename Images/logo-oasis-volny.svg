@@ -1,5 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 104" role="img" aria-labelledby="title desc">
-<title id="title">L’Oasis de Volny</title><desc id="desc">Emblème élégant évoquant le soleil et l’eau, suivi du nom L’Oasis de Volny.</desc>
-<g transform="translate(6 8)"><circle cx="44" cy="44" r="40" fill="#173b35"/><circle cx="44" cy="44" r="34.5" fill="none" stroke="#c9a96e" stroke-width="1.4"/><path d="M25 49a19 19 0 0 1 38 0" fill="none" stroke="#f4efe4" stroke-width="2.1" stroke-linecap="round"/><circle cx="44" cy="39" r="7.1" fill="#c9a96e"/><path d="M23 54c6-4 12-4 18 0s12 4 18 0 11-4 15 0" fill="none" stroke="#f4efe4" stroke-width="2.2" stroke-linecap="round"/><path d="M26 61c5-3 10-3 15 0s10 3 15 0 10-3 14 0" fill="none" stroke="#8fb5a6" stroke-width="1.7" stroke-linecap="round"/></g>
-<g fill="#173b35"><text x="105" y="51" font-family="Georgia, 'Times New Roman', serif" font-size="33" letter-spacing="1.1">L’OASIS</text><text x="107" y="78" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="500" letter-spacing="4.1">DE VOLNY</text></g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 116" role="img" aria-labelledby="title desc">
+  <title id="title">L’Oasis de Volny — proposition 2</title>
+  <desc id="desc">Logo typographique élégant avec un monogramme OV dans une arche, en vert profond et sable.</desc>
+  <g transform="translate(11 8)">
+    <path d="M10 92V43a34 34 0 0 1 68 0v49" fill="none" stroke="#b99b66" stroke-width="2.4"/>
+    <path d="M20 92h48" fill="none" stroke="#b99b66" stroke-width="1.5"/>
+    <text x="44" y="67" text-anchor="middle" fill="#173b35" font-family="Georgia, 'Times New Roman', serif" font-size="33" letter-spacing="-3">OV</text>
+    <circle cx="44" cy="82" r="2" fill="#b99b66"/>
+  </g>
+  <path d="M111 21v74" fill="none" stroke="#d9cfbb" stroke-width="1.2"/>
+  <g fill="#173b35">
+    <text x="133" y="62" font-family="Georgia, 'Times New Roman', serif" font-size="34" letter-spacing="2.4">L’OASIS</text>
+    <text x="136" y="86" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="500" letter-spacing="5.6">DE VOLNY</text>
+  </g>
 </svg>

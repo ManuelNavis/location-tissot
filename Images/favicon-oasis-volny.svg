@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title"><title id="title">L’Oasis de Volny</title><circle cx="48" cy="48" r="46" fill="#173b35"/><circle cx="48" cy="48" r="39" fill="none" stroke="#c9a96e" stroke-width="1.8"/><path d="M27 53a21 21 0 0 1 42 0" fill="none" stroke="#f4efe4" stroke-width="2.6" stroke-linecap="round"/><circle cx="48" cy="41" r="8" fill="#c9a96e"/><path d="M24 60c7-4 14-4 21 0s14 4 21 0 12-4 17 0M28 68c6-3 12-3 18 0s12 3 18 0 10-3 14 0" fill="none" stroke="#f4efe4" stroke-width="2.6" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+<title id="title">L’Oasis de Volny</title>
+<rect x="2" y="2" width="92" height="92" rx="23" fill="#f4efe4"/>
+<path d="M20 80V44a28 28 0 0 1 56 0v36" fill="none" stroke="#b99b66" stroke-width="3"/>
+<path d="M28 80h40" fill="none" stroke="#b99b66" stroke-width="2"/>
+<text x="48" y="65" text-anchor="middle" fill="#173b35" font-family="Georgia, 'Times New Roman', serif" font-size="29" letter-spacing="-3">OV</text>
+<circle cx="48" cy="72" r="2.3" fill="#b99b66"/>
+</svg>
