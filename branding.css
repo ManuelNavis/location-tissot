@@ -4,8 +4,14 @@
 .footer__brand img { width: 215px; height: auto; max-width: min(55vw, 215px); object-fit: contain; flex: 0 1 auto; }
 @media (max-width: 560px) { .footer__inner { flex-wrap: wrap; gap: 14px; } .footer__brand img { max-width: 190px; } }
 
-/* Logo sélectionné : panneau clair pour garder le monogramme lisible sur les fonds photo et vert. */
-.hero__brand { display: inline-flex; align-items: center; padding: 7px 11px; margin: 0 0 18px; background: #f4efe4; border: 1px solid rgb(185 155 102 / 38%); border-radius: 5px; box-shadow: 0 5px 18px rgb(0 0 0 / 12%); }
-.hero__brand img { display: block; width: 215px; max-width: min(55vw, 215px); height: auto; }
-.footer__brand img { box-sizing: border-box; width: 215px; height: 60px; max-width: min(55vw, 215px); padding: 4px 8px; background: #f4efe4; border: 1px solid rgb(185 155 102 / 42%); border-radius: 5px; object-fit: contain; flex: 0 1 auto; }
-@media (max-width: 560px) { .hero__brand img { max-width: 190px; } .footer__brand img { width: 190px; max-width: 190px; } }
+
+
+/* Logo blanc : affiché directement sur le voile sombre de la bannière et sur le pied de page vert. */
+.hero__brand { display: inline-flex; align-items: center; padding: 0; margin: 0 0 22px; background: transparent; border: 0; border-radius: 0; box-shadow: none; }
+.hero__brand img { display: block; width: min(360px, 72vw); max-width: 100%; height: auto; }
+.footer__brand img { box-sizing: border-box; display: block; width: 255px; height: auto; max-width: min(64vw, 255px); padding: 0; background: transparent; border: 0; border-radius: 0; object-fit: contain; flex: 0 1 auto; }
+@media (max-width: 560px) {
+  .hero__brand { margin-bottom: 18px; }
+  .hero__brand img { width: min(300px, 74vw); }
+  .footer__brand img { width: min(230px, 64vw); max-width: 230px; }
+}
