@@ -1,6 +1,6 @@
-# Site du logement TISSOT
+# Site de L’Oasis de Volny
 
-Site statique prévu pour GitHub Pages. Il n’a pas de serveur de réservation : le formulaire prépare un e-mail sur l’appareil du visiteur et ne transmet ni ne conserve les données sur le site.
+Site statique de L’Oasis de Volny, prévu pour GitHub Pages. Il n’a pas de serveur de réservation : le formulaire prépare un e-mail sur l’appareil du visiteur et ne transmet ni ne conserve les données sur le site.
 
 ## Avant publication
 
